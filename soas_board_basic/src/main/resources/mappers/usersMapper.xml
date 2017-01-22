@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.soas.UsersMapper">
+
+	<insert id="create" parameterType="Users">
+		insert into tbl_users
+		<if test="user_profile != null">
+				(user_nickname, user_id, user_pw, user_email, user_profile)
+			values 
+				(#{user_nickname}, #{user_id}, #{user_pw}, #{user_email}, #{user_profile})
+			</if>
+		
+		<if test="user_profile  == null">
+				(user_nickname, user_id, user_pw, user_email)
+			values 
+				(#{user_nickname}, #{user_id}, #{user_pw}, #{user_email})
+		</if>
+	</insert>
+
+	<select id="read" resultType="Users">
+		select *
+		from tbl_users
+		where user_nickname = #{user_nickname}
+	</select>
+
+	<delete id="delete">
+		delete from tbl_users
+		where user_nickname = #{user_nickname}
+	</delete>
+
+	<update id="update">
+		update tbl_users
+		set 
+			user_pw = #{user_pw},
+			user_email = #{user_email},
+			user_profile = #{user_profile},
+			user_updatedate = now()
+		where 
+			user_nickname = #{user_nickname}
+	</update>
+
+</mapper>

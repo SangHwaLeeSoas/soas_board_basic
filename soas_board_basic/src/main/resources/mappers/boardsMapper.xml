@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <mapper namespace="org.soas.BoardsMapper">
+ 
+ 	<insert id="create">
+ 		insert into tbl_boards
+ 			(user_nickname, board_title, board_content)
+ 		values
+ 			(#{user_nickname}, #{board_title}, #{board_content})
+ 	</insert>
+ 	
+ 	<select id="read" resultType="Boards">
+ 		select * 
+ 		from tbl_boards
+ 		where board_idx = #{board_idx}
+ 	</select>
+ 	
+ 	<delete id="delete">
+ 		delete from tbl_boards
+ 		where board_idx = #{board_idx}
+ 	</delete>
+ 	
+ 	<update id="update">
+ 		update tbl_boards
+ 		set
+ 			board_title = #{board_title},
+ 			board_content = #{board_content},
+ 			board_updatedate = now()
+ 		where
+ 			board_idx = #{board_idx}
+ 	</update>
+ </mapper>
