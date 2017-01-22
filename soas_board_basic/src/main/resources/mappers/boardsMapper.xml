@@ -32,4 +32,44 @@
  		where
  			board_idx = #{board_idx}
  	</update>
+ 	
+ 	<update id="upViewCount">
+ 		update tbl_boards
+ 		set
+ 			board_viewCount = board_viewCount + 1
+ 		where 
+ 			board_idx = #{board_idx}
+ 	</update>
+ 	
+ 	<update id ="upReplyCount">
+ 		update tbl_boards
+ 		set
+ 			board_replyCount = board_replyCount + 1
+ 		where
+ 			board_idx = #{board_idx}
+ 	</update>
+ 	
+ 	 	<update id ="downReplyCount">
+ 		update tbl_boards
+ 		set
+ 			board_replyCount = board_replyCount - 1
+ 		where
+ 			board_idx = #{board_idx}
+ 	</update>
+ 	
+ 	<update id ="upLikeCount">
+ 		update tbl_boards
+ 		set
+ 			board_likeCount = board_likeCount + 1
+ 		where
+ 			board_idx = #{board_idx}
+ 	</update>
+ 	
+ 	<update id ="downLikeCount">
+ 		update tbl_boards
+ 		set
+ 			board_likeCount = board_likeCount - 1
+ 		where
+ 			board_idx = #{board_idx}
+ 	</update>
  </mapper>

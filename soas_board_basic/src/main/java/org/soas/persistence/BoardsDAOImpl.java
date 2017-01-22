@@ -1,6 +1,5 @@
 package org.soas.persistence;
 
-import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.soas.domain.Boards;
@@ -17,78 +16,103 @@ public class BoardsDAOImpl implements BoardsDAO {
 	
 	
 	@Override
-	public void create(Boards boards) throws Exception {
+	public void create(Boards boards){
 		
-		session.insert(namespace + "create", boards);
+		try{
+			session.insert(namespace + "create", boards);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	
 	@Override
-	public Boards read(Integer board_idx) throws Exception {
+	public Boards read(Integer board_idx){
 
-		return session.selectOne(namespace + "read", board_idx);
+		try{
+			return session.selectOne(namespace + "read", board_idx);
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	
 	@Override
-	public void delete(Integer board_idx) throws Exception {
+	public void delete(Integer board_idx){
 
-		session.delete(namespace + "delete", board_idx);
+		try{
+			session.delete(namespace + "delete", board_idx);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	
 	@Override
-	public void update(Boards boards) throws Exception {
+	public void update(Boards boards){
 
-		session.update(namespace + "update", boards);
+		try{
+			session.update(namespace + "update", boards);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	
+	@Override
+	public void upViewCount(Integer board_idx){
+		
+		try{
+			session.update(namespace + "upViewCount", board_idx);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	
+	@Override
+	public void upReplyCount(Integer board_idx){
+
+		try{
+			session.update(namespace + "upReplyCount", board_idx);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 
 	@Override
-	public List<Boards> listAll(Integer page, Integer pageUnit) throws Exception {
+	public void downReplyCount(Integer board_idx){
 
-		return session.selectList(namespace + "listAll", page);
+		try{
+			session.update(namespace + "downReplyCount", board_idx);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 
 	@Override
-	public Integer getAllCount() throws Exception {
-
-		return session.selectOne(namespace + "getAllCount");
+	public void upLikeCount(Integer board_idx){
+		
+		try{
+			session.update(namespace + "upLikeCount", board_idx);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 
 	@Override
-	public List<Boards> listSearch(Integer page, Integer pageUnit) throws Exception {
-
-		return session.selectList(namespace + "listSearch", page);
+	public void downLikeCount(Integer board_idx){
+		
+		try{
+			session.update(namespace + "downLikeCount", board_idx);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
-
-	@Override
-	public Integer getSearchCount() throws Exception {
-
-		return session.selectOne(namespace + "getSearchCount");
-	}
-
-
-	@Override
-	public void upViewCount() throws Exception {
-
-		session.update(namespace + "upViewCount");
-	}
-
-	@Override
-	public void upReplyCount() throws Exception {
-
-		session.update(namespace + "upReplyCount");
-	}
-
-
-	@Override
-	public void downReplyCount() throws Exception {
-
-		session.update(namespace + "downReplyCount");
-	}
 
 }

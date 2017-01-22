@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import lombok.extern.java.Log;
 
 
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring/root-context.xml" })
 @Log
@@ -55,5 +56,30 @@ public class BoardsDAOTester {
 		boards.setBoard_idx(2);
 		
 		dao.update(boards);
+	}
+	
+	@Test
+	public void testUpViewCount() throws Exception{
+		dao.upViewCount(2);
+	} 
+	
+	@Test
+	public void testUpReplyCount() throws Exception{
+		dao.upReplyCount(2);
+	}
+	
+	@Test
+	public void testDownReplyCount() throws Exception{
+		dao.downReplyCount(2);
+	}
+	
+	@Test
+	public void testUpLikeCount() throws Exception{
+		dao.upLikeCount(2);
+	}
+	
+	@Test
+	public void testDownLikeCount() throws Exception{
+		dao.downLikeCount(2);
 	}
 }
