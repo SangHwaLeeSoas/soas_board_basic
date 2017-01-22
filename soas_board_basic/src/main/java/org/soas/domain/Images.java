@@ -10,7 +10,7 @@ import lombok.ToString;
 public class Images {
 
 	
-	private Integer image_idx;
+	private Integer image_idx, board_idx;
 	private String image_name, image_thumbnail;
 	
 }
