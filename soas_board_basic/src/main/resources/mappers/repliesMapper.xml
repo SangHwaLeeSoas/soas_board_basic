@@ -41,4 +41,9 @@
  			board_idx = #{board_idx}
  	</select>
  
+ 	<delete id="delete_board_idx">
+ 		delete from tbl_replies
+ 		where board_idx = #{board_idx}
+ 	</delete>
+ 
  </mapper>

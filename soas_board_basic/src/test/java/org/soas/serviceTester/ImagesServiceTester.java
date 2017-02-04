@@ -1,23 +1,24 @@
-package org.soas.daoTester;
+package org.soas.serviceTester;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.soas.domain.Images;
-import org.soas.persistence.ImagesDAO;
+import org.soas.service.ImagesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring/root-context.xml" })
-public class ImagesDAOTester {
+public class ImagesServiceTester {
 
 
 	@Autowired
-	ImagesDAO dao;
+	private ImagesService service;
 	
-	Images images;
+	private Images images;
+	
 	
 	@Before
 	public void setup(){
@@ -25,47 +26,40 @@ public class ImagesDAOTester {
 	}
 	
 	@Test
-	public void testCreate() throws Exception{
+	public void testRegist() throws Exception{
 		
-		images.setBoard_idx(1);
-		images.setImage_name("test name");
-		images.setImage_thumbnail("test thumbnail");
+		images.setBoard_idx(4);
+		images.setImage_name("name");
+		images.setImage_thumbnail("thumb");
 		
-		dao.create(images);
+		service.regist(images);
 	}
 	
 	@Test
-	public void testRead() throws Exception{
+	public void testView() throws Exception{
 		
-		dao.read(1);
+		service.view(11);
 	}
 	
 	@Test
 	public void testDelete() throws Exception{
 		
-		dao.delete(1);
+		service.remove(11);
 	}
 	
 	@Test
-	public void testUpdate() throws Exception{
+	public void testModify() throws Exception{
 		
-		images.setImage_name("update name");
-		images.setImage_thumbnail("update thumb");
-		images.setImage_idx(2);
-		
-		dao.update(images);
-		
+		images.setImage_name("momo");
+		images.setImage_thumbnail("momoth");
+		images.setImage_idx(11);
+		service.modify(images);
 	}
 	
 	@Test
 	public void testList_board_idx() throws Exception{
 		
-		dao.list_board_idx(1);
+		service.list_boad_idx(4);
 	}
-	
-	@Test
-	public void testDelete_board_idx() throws Exception{
-		
-		dao.delete_board_idx(1);
-	}
+
 }

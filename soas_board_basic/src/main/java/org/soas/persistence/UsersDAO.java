@@ -6,13 +6,13 @@ import org.soas.domain.Users;
 public interface UsersDAO {
 	
 
-	public void create(Users users) throws Exception;
+	public void create(Users users);
 
-	public Users read(String nickname) throws Exception;
+	public Users read(String nickname);
 
-	public void delete(String nickname) throws Exception;
+	public void delete(String nickname);
 
-	public void update(Users users) throws Exception;
+	public void update(Users users);
 
 	// Users list, search for admin version...
 }

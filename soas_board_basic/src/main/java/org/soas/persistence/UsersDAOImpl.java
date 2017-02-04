@@ -17,7 +17,7 @@ public class UsersDAOImpl implements UsersDAO {
 
 	
 	@Override
-	public void create(Users users) throws Exception {
+	public void create(Users users) {
 
 		try {
 			session.insert(namespace + "create", users);
@@ -28,7 +28,7 @@ public class UsersDAOImpl implements UsersDAO {
 	
 
 	@Override
-	public Users read(String nickname) throws Exception {
+	public Users read(String nickname) {
 
 		try {
 			return session.selectOne(namespace + "read", nickname);
@@ -40,7 +40,7 @@ public class UsersDAOImpl implements UsersDAO {
 
 	
 	@Override
-	public void delete(String nickname) throws Exception {
+	public void delete(String nickname) {
 
 		try {
 			session.delete(namespace + "delete", nickname);
@@ -51,7 +51,7 @@ public class UsersDAOImpl implements UsersDAO {
 
 	
 	@Override
-	public void update(Users users) throws Exception {
+	public void update(Users users) {
 
 		try {
 			session.update(namespace + "update", users);

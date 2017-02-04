@@ -18,7 +18,7 @@ public class RepliesDAOImpl implements RepliesDAO {
 	
 	
 	@Override
-	public void create(Replies replies) throws Exception {
+	public void create(Replies replies) {
 
 		try {
 			session.insert(namespace + "create", replies);
@@ -29,7 +29,7 @@ public class RepliesDAOImpl implements RepliesDAO {
 
 	
 	@Override
-	public Replies read(Integer reply_idx) throws Exception {
+	public Replies read(Integer reply_idx) {
 
 		try {
 			return session.selectOne(namespace + "read", reply_idx);
@@ -41,10 +41,10 @@ public class RepliesDAOImpl implements RepliesDAO {
 	
 
 	@Override
-	public void delete(Integer reply_idx) throws Exception {
+	public void delete(Replies replies) {
 
 		try {
-			session.delete(namespace + "delete", reply_idx);
+			session.delete(namespace + "delete", replies);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -52,7 +52,7 @@ public class RepliesDAOImpl implements RepliesDAO {
 
 	
 	@Override
-	public void update(Replies replies) throws Exception {
+	public void update(Replies replies) {
 
 		try {
 			session.update(namespace + "update", replies);
@@ -63,13 +63,24 @@ public class RepliesDAOImpl implements RepliesDAO {
 
 	
 	@Override
-	public List<Replies> list_board_idx(Integer board_idx) throws Exception {
+	public List<Replies> list_board_idx(Integer board_idx) {
 
 		try {
 			return session.selectList(namespace + "list_board_idx", board_idx);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
+		}
+	}
+
+
+	@Override
+	public void delete_board_idx(Integer board_idx) {
+
+		try {
+			session.delete(namespace + "delete_board_idx", board_idx);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 

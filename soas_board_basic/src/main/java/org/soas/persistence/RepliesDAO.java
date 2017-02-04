@@ -7,14 +7,16 @@ import org.soas.domain.Replies;
 public interface RepliesDAO {
 
 	
-	public void create(Replies replies) throws Exception;
+	public void create(Replies replies);
 	
-	public Replies read(Integer reply_idx) throws Exception;
+	public Replies read(Integer reply_idx);
 	
-	public void delete(Integer reply_idx) throws Exception;
+	public void delete(Replies replies);
 	
-	public void update(Replies replies) throws Exception;
+	public void update(Replies replies);
 	
-	public List<Replies> list_board_idx(Integer board_idx) throws Exception;
+	public List<Replies> list_board_idx(Integer board_idx);
+	
+	public void delete_board_idx(Integer board_idx);
 	
 }

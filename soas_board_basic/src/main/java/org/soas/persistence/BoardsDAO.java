@@ -11,10 +11,10 @@ public interface BoardsDAO {
 	public Boards read(Integer board_idx);
 
 	public void delete(Integer board_idx);
-
+	
 	public void update(Boards boards);
 	
-	public void upViewCount(Integer board_idx);
+	public void upViewCount(Integer board_idx); // Handler 제어...
 	
 	public void upReplyCount(Integer board_idx);
 

@@ -12,7 +12,7 @@ public class ImagesDAOImpl implements ImagesDAO{
 
 	
 	@Autowired
-	SqlSession session;
+	private SqlSession session;
 	
 	private String namespace = "org.soas.ImagesMapper.";
 	
@@ -70,6 +70,17 @@ public class ImagesDAOImpl implements ImagesDAO{
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
+		}
+	}
+
+
+	@Override
+	public void delete_board_idx(Integer board_idx) {
+
+		try {
+			session.delete(namespace + "delete_board_idx", board_idx);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 

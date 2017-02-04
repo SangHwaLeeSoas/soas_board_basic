@@ -47,7 +47,9 @@ public class RepliesDAOTester {
 	@Test
 	public void testDelete() throws Exception{
 		
-		dao.delete(1);
+		replies.setReply_idx(1);
+		
+		dao.delete(replies);
 	}
 
 	
@@ -65,6 +67,12 @@ public class RepliesDAOTester {
 	public void testList_board_idx() throws Exception{
 		
 		dao.list_board_idx(1);
+	}
+	
+	@Test
+	public void testDelete_board_idx() throws Exception{
+		
+		dao.delete_board_idx(1);
 	}
 	
 }

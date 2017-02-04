@@ -28,7 +28,6 @@
 		set 
 			image_name = #{image_name},
 			image_thumbnail = #{image_thumbnail}
-			image_updatedate = now()
 		where 
 			image_idx = #{image_idx}
 	</update>
@@ -38,5 +37,10 @@
 		from tbl_images
 		where board_idx = #{board_idx}
 	</select>
+  	
+  	<delete id="delete_board_idx">
+  		delete from tbl_images
+  		where board_idx = #{board_idx}
+  	</delete>
   	
   </mapper>

@@ -32,7 +32,7 @@ public class BoardsDAOTester {
 	
 	@Test
 	public void testCreate() throws Exception{
-		boards.setUser_nickname("test_nickname");
+		boards.setUser_nickname("nick");
 		boards.setBoard_title("test_title");
 		boards.setBoard_content("test_content");
 		
@@ -70,7 +70,7 @@ public class BoardsDAOTester {
 	
 	@Test
 	public void testDownReplyCount() throws Exception{
-		dao.downReplyCount(2);
+		dao.downReplyCount(3);
 	}
 	
 	@Test
