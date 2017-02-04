@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="org.soas.RepliesMapper">
+ 
+ 	<insert id="create">
+ 		insert into tbl_replies
+ 			(board_idx, user_nickname, reply_content)
+ 		values
+ 			(#{board_idx}, #{user_nickname}, #{reply_content})
+ 	</insert>
+ 
+ 	<select id="read" resultType="Replies">
+ 		select *
+ 		from tbl_replies
+ 		where
+ 			reply_idx = #{reply_idx}
+ 	</select>
+ 
+ 	<delete id="delete">
+ 		delete from tbl_replies
+ 		where
+ 			reply_idx = #{reply_idx}
+ 	</delete>
+ 	
+ 	<update id="update">
+ 		update tbl_replies
+ 		set
+ 			reply_content = #{reply_content},
+ 			reply_updatedate = now()
+ 		where
+ 			reply_idx = #{reply_idx}
+ 	</update>
+ 	
+ 	<select id="list_board_idx" resultType="Replies">
+ 		select *
+ 		from tbl_replies
+ 		where
+ 			board_idx = #{board_idx}
+ 	</select>
+ 
+ </mapper>

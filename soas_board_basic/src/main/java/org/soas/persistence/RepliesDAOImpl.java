@@ -3,25 +3,25 @@ package org.soas.persistence;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
-import org.soas.domain.Images;
+import org.soas.domain.Replies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class ImagesDAOImpl implements ImagesDAO{
+public class RepliesDAOImpl implements RepliesDAO {
 
 	
 	@Autowired
-	SqlSession session;
+	private SqlSession session;
 	
-	private String namespace = "org.soas.ImagesMapper.";
+	private String namespace = "org.soas.RepliesMapper.";
 	
 	
 	@Override
-	public void create(Images images) {
-	
+	public void create(Replies replies) throws Exception {
+
 		try {
-			session.insert(namespace + "create", images);
+			session.insert(namespace + "create", replies);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -29,22 +29,22 @@ public class ImagesDAOImpl implements ImagesDAO{
 
 	
 	@Override
-	public Images read(Integer image_idx) {
+	public Replies read(Integer reply_idx) throws Exception {
 
 		try {
-			return session.selectOne(namespace + "read", image_idx);
+			return session.selectOne(namespace + "read", reply_idx);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
-
 	
+
 	@Override
-	public void delete(Integer image_idx) {
+	public void delete(Integer reply_idx) throws Exception {
 
 		try {
-			session.delete(namespace + "delete", image_idx);
+			session.delete(namespace + "delete", reply_idx);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -52,10 +52,10 @@ public class ImagesDAOImpl implements ImagesDAO{
 
 	
 	@Override
-	public void update(Images images) {
+	public void update(Replies replies) throws Exception {
 
 		try {
-			session.update(namespace + "update", images);
+			session.update(namespace + "update", replies);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -63,7 +63,7 @@ public class ImagesDAOImpl implements ImagesDAO{
 
 	
 	@Override
-	public List<Images> list_board_idx(Integer board_idx) {
+	public List<Replies> list_board_idx(Integer board_idx) throws Exception {
 
 		try {
 			return session.selectList(namespace + "list_board_idx", board_idx);

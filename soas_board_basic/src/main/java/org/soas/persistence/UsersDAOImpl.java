@@ -19,29 +19,45 @@ public class UsersDAOImpl implements UsersDAO {
 	@Override
 	public void create(Users users) throws Exception {
 
-		session.insert(namespace + "create", users);
+		try {
+			session.insert(namespace + "create", users);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 
 	@Override
 	public Users read(String nickname) throws Exception {
 
-		return session.selectOne(namespace + "read", nickname);
+		try {
+			return session.selectOne(namespace + "read", nickname);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	
 	@Override
 	public void delete(String nickname) throws Exception {
 
-		session.delete(namespace + "delete", nickname);
+		try {
+			session.delete(namespace + "delete", nickname);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	
 	@Override
 	public void update(Users users) throws Exception {
 
-		session.update(namespace + "update", users);
+		try {
+			session.update(namespace + "update", users);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-
 
 }

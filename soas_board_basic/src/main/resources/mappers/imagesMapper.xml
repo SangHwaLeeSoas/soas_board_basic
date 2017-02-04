@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="org.soas.ImagesMapper">
+  	
+  	<insert id="create">
+  		insert into tbl_images 
+  			(board_idx, image_name, image_thumbnail)
+  		values
+  			(#{board_idx}, #{image_name}, #{image_thumbnail})
+  	</insert>
+
+	<select id="read" resultType="Images">
+		select *
+		from tbl_images
+		where image_idx = #{image_idx}
+	</select>
+	
+	<delete id="delete">
+		delete from tbl_images
+		where image_idx = #{image_idx}
+	</delete>
+	
+	<update id="update">
+		update tbl_images
+		set 
+			image_name = #{image_name},
+			image_thumbnail = #{image_thumbnail}
+			image_updatedate = now()
+		where 
+			image_idx = #{image_idx}
+	</update>
+	
+	<select id="list_board_idx" resultType="Images">
+		select *
+		from tbl_images
+		where board_idx = #{board_idx}
+	</select>
+  	
+  </mapper>

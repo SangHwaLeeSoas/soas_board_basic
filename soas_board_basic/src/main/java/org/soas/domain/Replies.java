@@ -12,7 +12,7 @@ import lombok.ToString;
 public class Replies {
 	
 	
-	private Integer board_idx, reply_rno;
+	private Integer board_idx, reply_idx;
 	private String user_nickname, reply_content;
 	private Date reply_regdate, reply_updatedate;
 
